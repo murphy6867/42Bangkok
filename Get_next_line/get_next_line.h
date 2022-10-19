@@ -6,7 +6,7 @@
 /*   By: murphy <murphy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 10:35:13 by sngmasom          #+#    #+#             */
-/*   Updated: 2022/10/19 11:28:15 by murphy           ###   ########.fr       */
+/*   Updated: 2022/10/19 19:53:18 by murphy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@
 #include <stdlib.h>
 
 char *get_next_line(int fd);
+size_t  ft_strlen(const char *s);
 
 #endif
