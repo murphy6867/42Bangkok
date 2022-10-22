@@ -6,7 +6,7 @@
 /*   By: murphy <murphy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 09:27:25 by murphy            #+#    #+#             */
-/*   Updated: 2022/10/22 10:24:28 by murphy           ###   ########.fr       */
+/*   Updated: 2022/10/22 10:33:44 by murphy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 char *get_next_line(int fd) {
     int readBytes;
     char *buffer;
-    size_t count;
+   // size_t count;
 
     buffer = malloc(sizeof(char) * 100);
     if(buffer < 0) {perror("malloc failure.\n"); exit(1);}
@@ -38,18 +38,14 @@ char *get_next_line(int fd) {
     if(readBytes < 0) {perror("read error or signal interrupt.\n"); exit(1);}
     buffer[readBytes] = '\0';
 
-    count = 0;
-    while(buffer[count] != '\0')
-    {
-        count++;
-    }
+    //count = ft_strlen(buffer);
 
     close(fd);
     if(close < 0) {perror("close error.\n"); exit(1);}
 
-    return(0);
+    return(buffer);
 }
-/*
+
 int main()
 {
     int fd;
@@ -62,12 +58,4 @@ int main()
     
     result = get_next_line(fd);
     printf("result : %s\n", result);
-}*/
-
-int main()
-{
-    char *str;
-    str = "123456!@#ASD";
-    printf("total : %zu\n", ft_strlen(str));
-    return 0;
 }
