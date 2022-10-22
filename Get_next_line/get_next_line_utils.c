@@ -6,7 +6,7 @@
 /*   By: murphy <murphy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 18:49:14 by murphy            #+#    #+#             */
-/*   Updated: 2022/10/22 13:48:35 by murphy           ###   ########.fr       */
+/*   Updated: 2022/10/22 14:46:35 by murphy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ size_t  ft_strlen(const char *s)
     description:
         The function ft_strchr searches for the first occurrence of the character c
         in the string pointed to by the argument str.
-    parameters:
+    argument:
         str − This is the C string to be scanned.
         c − This is the character to be searched in str.
     return:
@@ -71,18 +71,48 @@ char    *ft_strchr(const char *str, int c)
 
 
 /*
-    desciption: 
-    
+    desciption:
+        The function ft_strjoin is used to concatenate two strings.
+    argument:
+        strL - The first string to be connected.
+        strR - The second string to be connected.
+    return:
+        This function returns a new string connected between the first and the second string.
+        or NULL if input strL and strR incorrect. 
 */
+char    *ft_strjoin(char const *strL, char const *strR)
+{
+    int count1;
+    int count2;
+    char *newString;
 
+    if(!strL || !strR)
+        return(NULL);
+    newString = (char*)malloc((ft_strlen(strL) + ft_strlen(strR)) + 1);
+    if(newString == NULL)
+        return(NULL);
+    count1 = 0;
+    count2 = 0;
+    while(strL[count1] != '\0')
+    {
+        newString[count1] = strL[count1];
+        count1++;
+    }
+    while(strR[count2] != '\0')
+    {
+        newString[count1++] = strR[count2++];
+    }
+    newString[ft_strlen(strL) + ft_strlen(strR)] = '\0';
+    return(newString);
+}
 
 
 
 
 int main()
 {
-    char *str = "123456";
-    const char test = '\0';
+    char *str = "";
+    char *str2 = "";
 
-    printf("find %c in %s result = %s", test, str, ft_strchr(str, test));
+    printf("str1: %s + str2: %s == %s\n", str, str2, ft_strjoin(str, str2));
 }
