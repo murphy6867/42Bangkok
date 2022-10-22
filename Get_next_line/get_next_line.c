@@ -6,7 +6,7 @@
 /*   By: murphy <murphy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 09:27:25 by murphy            #+#    #+#             */
-/*   Updated: 2022/10/19 19:54:43 by murphy           ###   ########.fr       */
+/*   Updated: 2022/10/22 10:24:28 by murphy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char *get_next_line(int fd) {
 
     return(0);
 }
-
+/*
 int main()
 {
     int fd;
@@ -62,4 +62,12 @@ int main()
     
     result = get_next_line(fd);
     printf("result : %s\n", result);
+}*/
+
+int main()
+{
+    char *str;
+    str = "123456!@#ASD";
+    printf("total : %zu\n", ft_strlen(str));
+    return 0;
 }
