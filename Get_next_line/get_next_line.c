@@ -6,9 +6,39 @@
 /*   By: murphy <murphy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 09:27:25 by murphy            #+#    #+#             */
-/*   Updated: 2022/10/22 10:33:44 by murphy           ###   ########.fr       */
+/*   Updated: 2022/10/23 16:37:15 by murphy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include"get_next_line.h"
+
+#include<unistd.h>
+
+char    *get_line_string(int fd, char *lineString)
+{
+    char    *buffer;
+    int     readString;
+
+    buffer = (char*)malloc((BUFFER_SIZE + 1) * sizeof(char));
+    if(buffer < 0)
+    {
+        return(NULL);
+    }
+
+    while(!ft_strchr(lineString, '\n'))
+    {
+        readString = read(fd, buffer, BUFFER_SIZE);
+        if(readString == -1)
+        {
+            free(buffer);
+            return(NULL);
+        }
+        buffer[readString] = '\0';
+        lineString = ft_strjoin(lineString, buffer);
+    }
+    free(buffer);
+    return(lineString);
+}
 
 /*
     Description:
@@ -23,27 +53,22 @@
         - The function returns a string from fd and ends at \n.
         - If an error occurs or there is nothing to read, NULL is return.
 */
-
-#include"get_next_line.h"
-
 char *get_next_line(int fd) {
-    int readBytes;
-    char *buffer;
-   // size_t count;
+    char    *newLine;
+    static char *strLine;
 
-    buffer = malloc(sizeof(char) * 100);
-    if(buffer < 0) {perror("malloc failure.\n"); exit(1);}
-
-    readBytes = read(fd, buffer, 100);
-    if(readBytes < 0) {perror("read error or signal interrupt.\n"); exit(1);}
-    buffer[readBytes] = '\0';
-
-    //count = ft_strlen(buffer);
-
-    close(fd);
-    if(close < 0) {perror("close error.\n"); exit(1);}
-
-    return(buffer);
+    if(fd < 0 || BUFFER_SIZE <= 0)
+    {
+        return(0);
+    }
+    strLine = get_line_string(fd, strLine);
+   if(strLine < 0)
+   {
+        return(0);
+   }
+   newLine = get_new_line(strLine);
+   strLine = new_str(strLine);
+   return(newLine);
 }
 
 int main()

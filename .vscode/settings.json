@@ -3,6 +3,7 @@
         "fcntl.h": "c",
         "stdio.h": "c",
         "get_next_line.h": "c",
-        "unistd.h": "c"
+        "unistd.h": "c",
+        "uio.h": "c"
     }
 }

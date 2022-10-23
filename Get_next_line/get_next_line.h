@@ -6,7 +6,7 @@
 /*   By: murphy <murphy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 10:35:13 by sngmasom          #+#    #+#             */
-/*   Updated: 2022/10/22 13:55:36 by murphy           ###   ########.fr       */
+/*   Updated: 2022/10/23 16:36:34 by murphy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,7 @@ char *get_next_line(int fd);
 size_t  ft_strlen(const char *s);
 char    *ft_strchr(const char *str, int c);
 char    *ft_strjoin(char const *s1, char const *s2);
+char	*get_new_line(char *strLine);
+char	*new_str(char *strLine);
+
 #endif

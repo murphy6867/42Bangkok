@@ -6,7 +6,7 @@
 /*   By: murphy <murphy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 18:49:14 by murphy            #+#    #+#             */
-/*   Updated: 2022/10/22 14:46:35 by murphy           ###   ########.fr       */
+/*   Updated: 2022/10/23 16:36:34 by murphy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,12 +107,57 @@ char    *ft_strjoin(char const *strL, char const *strR)
 }
 
 
-
-
-int main()
+char	*get_new_line(char *strLine)
 {
-    char *str = "";
-    char *str2 = "";
+	int		i;
+	char	*str;
 
-    printf("str1: %s + str2: %s == %s\n", str, str2, ft_strjoin(str, str2));
+	i = 0;
+	if (!strLine[i])
+		return (NULL);
+	while (strLine[i] && strLine[i] != '\n')
+		i++;
+	str = (char *)malloc(sizeof(char) * (i + 2));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (strLine[i] && strLine[i] != '\n')
+	{
+		str[i] = strLine[i];
+		i++;
+	}
+	if (strLine[i] == '\n')
+	{
+		str[i] = strLine[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+
+char	*new_str(char *strLine)
+{
+	int		i;
+	int		j;
+	char	*str;
+
+	i = 0;
+	while (strLine[i] && strLine[i] != '\n')
+		i++;
+	if (!strLine[i])
+	{
+		free(strLine);
+		return (NULL);
+	}
+	str = (char *)malloc(sizeof(char) * (ft_strlen(strLine) - i + 1));
+	if (!str)
+		return (NULL);
+	i++;
+	j = 0;
+	while (strLine[i])
+		str[j++] = strLine[i++];
+	str[j] = '\0';
+	free(strLine);
+	return (str);
 }
