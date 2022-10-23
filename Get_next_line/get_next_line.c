@@ -6,7 +6,7 @@
 /*   By: murphy <murphy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 09:27:25 by murphy            #+#    #+#             */
-/*   Updated: 2022/10/23 16:37:15 by murphy           ###   ########.fr       */
+/*   Updated: 2022/10/23 16:43:54 by murphy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,4 @@ char *get_next_line(int fd) {
    newLine = get_new_line(strLine);
    strLine = new_str(strLine);
    return(newLine);
-}
-
-int main()
-{
-    int fd;
-    char *result;
-    result = malloc(sizeof(char) * 100);
-    if(result < 0) {perror("malloc failure.\n"); exit(1);}
-
-    fd = open("asd.txt", O_RDONLY);
-    if (fd < 0) {perror("open failure.\n"); exit(1);}
-    
-    result = get_next_line(fd);
-    printf("result : %s\n", result);
 }

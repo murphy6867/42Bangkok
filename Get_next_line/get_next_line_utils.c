@@ -6,7 +6,7 @@
 /*   By: murphy <murphy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 18:49:14 by murphy            #+#    #+#             */
-/*   Updated: 2022/10/23 16:36:34 by murphy           ###   ########.fr       */
+/*   Updated: 2022/10/23 16:42:31 by murphy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,15 @@ char    *ft_strjoin(char const *strL, char const *strR)
 }
 
 
+
+/*
+    desciption: 
+        Extracts the line (ending in either line break and `\0` or only `\0` in EOF) from static variable.
+	 argument:
+	    #1. The pointer to the cumulative static variable from previous runs of get_next_line.
+	return:
+	    The string with the full line ending in a line break (`\n`) + (`\0`).
+*/
 char	*get_new_line(char *strLine)
 {
 	int		i;
@@ -136,6 +145,16 @@ char	*get_new_line(char *strLine)
 }
 
 
+
+/*
+    description:
+        Stores in the cumulative static variable the new updated variable with whatever is left from the original
+        , minus the line extracted.
+	argument:
+	    The pointer to the cumulative static variable from previous runs of get_next_line.
+	return:
+	    The new updated string with whatever is left from the original static, minus the line extracted.
+*/
 char	*new_str(char *strLine)
 {
 	int		i;
